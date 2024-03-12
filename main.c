@@ -11,10 +11,15 @@ int main() {
 
     push(list, 10);
     push(list, 20);
+    push(list, 30);
+    push(list, 40);
 
     print_list(list);
 
-    printf("tail: %d", list->tail->data);
+    remove_item(list, 40);
 
-//    return 0;
+    printf("after remove \n");
+
+    print_list(list);
+    free_list(list);
 }
