@@ -62,7 +62,12 @@ node_t* find_node_by_index(linked_list_t* list, int idx) {
         return NULL;
     }
 
-    while (current->next != NULL && count != list->size - 1) {
+    if (idx > list->size - 1 || idx < 0) {
+        printf("This index is out of list size");
+        return NULL;
+    }
+
+    while (current->next != NULL && count != idx) {
         if(count == list->size - 1) {
             return current;
         }
@@ -88,7 +93,10 @@ node_t* find_node_by_value(linked_list_t* list, int val) {
         current = current->next;
     }
 
-    return current;
+    if (current->data == val) return current;
+
+    printf("Not found");
+    return NULL;
 }
 
 int remove_first(linked_list_t* list) {
